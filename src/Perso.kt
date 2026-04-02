@@ -88,15 +88,28 @@ class Perso {
 
     }
     fun estVivant(): Boolean{
-        //TODO
-        return true
+     return if (this.pv>0) true else false
     }
 
     fun rechargerArmePrincipale(){
-        //TODO
+        if(this.armePrincipale !=null){
+            var nbBallesManquante= this.armePrincipale!!.tailleChargeur - this.armePrincipale!!.nombreBalle
+           if(this.armePrincipale!!.munition.quantite>nbBallesManquante){
+               this.armePrincipale!!.munition.quantite-=nbBallesManquante
+               this.armePrincipale!!.nombreBalle+=nbBallesManquante
+           }
+            //else if
+            //else
+        }
     }
 
     fun rechargerListeArme(){
-        //TODO
+        for (arme in armes){
+            arme.recharger()
+        }
+    }
+
+    fun afficheDetail(){
+        println("Nom : ${this.nom} Argent : ${this.argent} Pv: ${this.pv} / ${this.pvMax} Arme : ${this.armePrincipale?.nom}")
     }
 }

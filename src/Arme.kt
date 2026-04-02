@@ -18,6 +18,8 @@ class Arme {
     var porteMax = 100
     /** Seuil de déclenchement d'un coup critique */
     var declencheurCritique = 60
+    lateinit var munition:Munition
+    var nombreBalle:Int=0
 
     // TODO : Ajouter la gestion des munitions
 
@@ -39,7 +41,8 @@ class Arme {
         type: String,
         prix: Double,
         tailleC: Int,
-        porte: Int
+        porte: Int,
+        munition: Munition
     ) {
         this.id = id
         this.nom = nom
@@ -48,5 +51,18 @@ class Arme {
         this.prix = prix
         this.tailleChargeur = tailleC
         this.porteMax = porte
+        this.munition=munition
+        this.nombreBalle=tailleChargeur
     }
+    fun recharger(){
+
+            var nbBallesManquante= this.tailleChargeur - this.nombreBalle
+            if(this.munition.quantite>nbBallesManquante){
+                this.munition.quantite-=nbBallesManquante
+                this.nombreBalle+=nbBallesManquante
+            }
+            //else if
+            //else
+        }
+
 }
